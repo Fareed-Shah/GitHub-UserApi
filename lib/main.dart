@@ -28,13 +28,14 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   // api link
+  TextEditingController apiController = TextEditingController();
   final String apiuser = 'Fareed-Shah';
   var url = "https://api.github.com/users/";
   String? userName;
 
   // api calling function
   callApi() async {
-    var uri = Uri.parse(url + "$apiuser");
+    var uri = Uri.parse(url + apiuser.toString());
     setState(() {
       userName = null;
     });
@@ -74,6 +75,31 @@ class _HomeState extends State<Home> {
                   ),
             const SizedBox(
               height: 20.0,
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+              child: TextField(
+                controller: apiController,
+                decoration: InputDecoration(
+                  hintText: 'Enter Git User',
+                  enabled: true,
+                  enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                        color: Colors.green,
+                        width: 3.0,
+                      )),
+                  // filled: true,
+                  // fillColor: Colors.grey,
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                        color: Colors.red,
+                        width: 3.0,
+                      )),
+                ),
+              ),
             ),
             Container(
               height: 50,
