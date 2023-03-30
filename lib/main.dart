@@ -28,12 +28,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   // api link
-  var url = "https://api.github.com/users/Fareed-Shah";
+  final String apiuser = 'Fareed-Shah';
+  var url = "https://api.github.com/users/";
   String? userName;
 
   // api calling function
   callApi() async {
-    var uri = Uri.parse(url);
+    var uri = Uri.parse(url + "$apiuser");
     setState(() {
       userName = null;
     });
